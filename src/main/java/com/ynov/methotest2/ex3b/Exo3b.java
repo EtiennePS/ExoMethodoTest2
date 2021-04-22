@@ -14,16 +14,17 @@ public class Exo3b {
 			}
 			else if(currentLine.length() > lineLength) {
 				int lastIndex = currentLine.lastIndexOf(' ');
-				if(lastIndex == -1 || (currentLine.length() - lastIndex + s.indexOf(' ', i) - i) > wordLength) {
+				int nextIndex = s.indexOf(' ', i);
+				if(lastIndex == -1 || (currentLine.length() - lastIndex + nextIndex - i) > wordLength) {
 					formatted.append(currentLine.substring(0, currentLine.length() - 2)).append("-\n");
 					i -= 2;
-					currentLine = "";
+					
 				}
 				else {
 					formatted.append(currentLine.substring(0, lastIndex)).append('\n');
 					i -= currentLine.length() - 1 - lastIndex;
-					currentLine = "";
 				}
+				currentLine = "";
 			}
 		}
 		return formatted.toString();
